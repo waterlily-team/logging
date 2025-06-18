@@ -8,8 +8,8 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
-project("TKLogging" LANGUAGES C VERSION 0.0.0.1)
+project("TKLogging" LANGUAGES C VERSION 0.0.0.2)
 
 include(Helpers)
 run_checks(ON)
-create_target(OFF RAW_SOURCES "TKLogging")
+create_target(OFF RAW_SOURCES "TKLogging" OVERRIDE_SHARED ON)
