@@ -9,27 +9,26 @@ static FILE *getProperStream(rpgtk_log_type_t type)
 {
     switch (type)
     {
-        case RPGTK_LOG_TYPE_VERBOSE: [[fallthrough]];
-        case RPGTK_LOG_TYPE_LOG:     [[fallthrough]];
-        case RPGTK_LOG_TYPE_SUCCESS: return stdout;
-        case RPGTK_LOG_TYPE_WARNING: [[fallthrough]];
-        case RPGTK_LOG_TYPE_ERROR:   return stderr;
+        case RPGTK_LOG_TYPE_VERBOSE:    [[fallthrough]];
+        case RPGTK_LOG_TYPE_VERBOSE_OK: [[fallthrough]];
+        case RPGTK_LOG_TYPE_LOG:        [[fallthrough]];
+        case RPGTK_LOG_TYPE_SUCCESS:    return stdout;
+        case RPGTK_LOG_TYPE_WARNING:    [[fallthrough]];
+        case RPGTK_LOG_TYPE_ERROR:      return stderr;
     }
     // We can't really ever get here, but GCC whines and it's also good
     // insurance if I forget to update the switch with any new log types.
     return stdout;
 }
 
-static const char *const tags[] = {[RPGTK_LOG_TYPE_VERBOSE] = "VERB",
-                                   [RPGTK_LOG_TYPE_LOG] = "INFO",
-                                   [RPGTK_LOG_TYPE_SUCCESS] = " OK ",
-                                   [RPGTK_LOG_TYPE_WARNING] = "WARN",
-                                   [RPGTK_LOG_TYPE_ERROR] = "FAIL"};
-static const uint8_t colors[] = {[RPGTK_LOG_TYPE_VERBOSE] = 90,
-                                 [RPGTK_LOG_TYPE_LOG] = 0,
-                                 [RPGTK_LOG_TYPE_SUCCESS] = 32,
-                                 [RPGTK_LOG_TYPE_WARNING] = 33,
-                                 [RPGTK_LOG_TYPE_ERROR] = 31};
+static const char *const tags[] = {
+    [RPGTK_LOG_TYPE_VERBOSE] = "VERB", [RPGTK_LOG_TYPE_VERBOSE_OK] = "DONE",
+    [RPGTK_LOG_TYPE_LOG] = "INFO",     [RPGTK_LOG_TYPE_SUCCESS] = " OK ",
+    [RPGTK_LOG_TYPE_WARNING] = "WARN", [RPGTK_LOG_TYPE_ERROR] = "FAIL"};
+static const uint8_t colors[] = {
+    [RPGTK_LOG_TYPE_VERBOSE] = 90, [RPGTK_LOG_TYPE_VERBOSE_OK] = 32,
+    [RPGTK_LOG_TYPE_LOG] = 0,      [RPGTK_LOG_TYPE_SUCCESS] = 92,
+    [RPGTK_LOG_TYPE_WARNING] = 33, [RPGTK_LOG_TYPE_ERROR] = 31};
 
 static int columnSize = 0;
 

@@ -8,7 +8,7 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
-project("TKLogging" LANGUAGES C VERSION 0.0.0.4)
+project("TKLogging" LANGUAGES C VERSION 0.0.0.5)
 
 include(Helpers)
 run_checks(ON)
