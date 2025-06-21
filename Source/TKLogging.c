@@ -24,7 +24,7 @@ static FILE *getProperStream(rpgtk_log_type_t type)
 
 static const char *const tags[] = {
     [RPGTK_LOG_TYPE_VERBOSE_BEGIN] = "STRT", [RPGTK_LOG_TYPE_VERBOSE] = "VERB",
-    [RPGTK_LOG_TYPE_VERBOSE_OK] = "DONE",    [RPGTK_LOG_TYPE_LOG] = "INFO",
+    [RPGTK_LOG_TYPE_VERBOSE_OK] = "GOOD",    [RPGTK_LOG_TYPE_LOG] = "INFO",
     [RPGTK_LOG_TYPE_SUCCESS] = " OK ",       [RPGTK_LOG_TYPE_WARNING] = "WARN",
     [RPGTK_LOG_TYPE_ERROR] = "FAIL"};
 static const uint8_t colors[] = {
