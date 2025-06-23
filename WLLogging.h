@@ -25,6 +25,7 @@ typedef struct
     const size_t line;
 } waterlily_log_metadata_t;
 
+#if BUILD_TYPE == 0
 void(waterlily_log)(waterlily_log_metadata_t data, waterlily_log_type_t type,
                     FILE *redirect, const char *const format, ...);
 
@@ -32,5 +33,8 @@ void(waterlily_log)(waterlily_log_metadata_t data, waterlily_log_type_t type,
     waterlily_log((waterlily_log_metadata_t){FILENAME, __func__, __LINE__},    \
                   WATERLILY_LOG_TYPE_##type, nullptr,                          \
                   message __VA_OPT__(, ) __VA_ARGS__)
+#else
+#define waterlily_log(type, message, ...)
+#endif
 
 #endif // WLLOGGING_MAIN_H
