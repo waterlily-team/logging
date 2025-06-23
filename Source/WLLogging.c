@@ -14,7 +14,8 @@ static FILE *getProperStream(waterlily_log_type_t type)
         case WATERLILY_LOG_TYPE_VERBOSE:       [[fallthrough]];
         case WATERLILY_LOG_TYPE_VERBOSE_OK:    [[fallthrough]];
         case WATERLILY_LOG_TYPE_LOG:           [[fallthrough]];
-        case WATERLILY_LOG_TYPE_SUCCESS:       return stdout;
+        case WATERLILY_LOG_TYPE_SUCCESS:       [[fallthrough]];
+        case WATERLILY_LOG_TYPE_NOTE:          return stdout;
         case WATERLILY_LOG_TYPE_WARNING:       [[fallthrough]];
         case WATERLILY_LOG_TYPE_ERROR:         return stderr;
     }
@@ -28,13 +29,14 @@ static const char *const tags[] = {[WATERLILY_LOG_TYPE_VERBOSE_BEGIN] = "STRT",
                                    [WATERLILY_LOG_TYPE_VERBOSE_OK] = "GOOD",
                                    [WATERLILY_LOG_TYPE_LOG] = "INFO",
                                    [WATERLILY_LOG_TYPE_SUCCESS] = " OK ",
+                                   [WATERLILY_LOG_TYPE_NOTE] = "NOTE",
                                    [WATERLILY_LOG_TYPE_WARNING] = "WARN",
                                    [WATERLILY_LOG_TYPE_ERROR] = "FAIL"};
 static const uint8_t colors[] = {
     [WATERLILY_LOG_TYPE_VERBOSE_BEGIN] = 93, [WATERLILY_LOG_TYPE_VERBOSE] = 90,
     [WATERLILY_LOG_TYPE_VERBOSE_OK] = 32,    [WATERLILY_LOG_TYPE_LOG] = 0,
-    [WATERLILY_LOG_TYPE_SUCCESS] = 92,       [WATERLILY_LOG_TYPE_WARNING] = 33,
-    [WATERLILY_LOG_TYPE_ERROR] = 31};
+    [WATERLILY_LOG_TYPE_SUCCESS] = 92,       [WATERLILY_LOG_TYPE_NOTE] = 33,
+    [WATERLILY_LOG_TYPE_WARNING] = 31,       [WATERLILY_LOG_TYPE_ERROR] = 91};
 
 static int columnSize = 0;
 
