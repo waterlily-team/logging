@@ -8,7 +8,7 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
-project("WLLogging" LANGUAGES C VERSION 0.0.0.8)
+project("WLLogging" LANGUAGES C VERSION 0.0.0.9)
 
 include(Helpers)
 run_checks(ON)

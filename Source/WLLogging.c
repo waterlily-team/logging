@@ -2,6 +2,7 @@
 #include <errno.h>
 #include <stdarg.h>
 #include <stdint.h>
+#include <string.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
 
@@ -57,7 +58,12 @@ void(waterlily_log)(waterlily_log_metadata_t data, waterlily_log_type_t type,
              colors[type], tags[type], data.file, data.function, data.line,
              format);
     if (type == WATERLILY_LOG_TYPE_WARNING || type == WATERLILY_LOG_TYPE_ERROR)
-        snprintf(message, columnSize, "Errno: %d", errno);
+    {
+        char submessage[50];
+        snprintf(submessage, 50,
+                 "       > Current ERRNO (may be garbage): %d\n", errno);
+        strncat(message, submessage, columnSize);
+    }
 
     va_list args;
     va_start(args, format);
