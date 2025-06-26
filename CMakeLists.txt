@@ -1,6 +1,6 @@
 ################################################################################
-## The configuration files for the Waterlily logging project. This requires 
-## CMake version 3.10 or higher.
+## The configuration files for the Primrose project. This requires CMake version 
+## 3.10 or higher.
 ##
 ## Copyright (c) 2025 - the Waterlily Team
 ## This source code is under the GPLv3. For information on what that entails,
@@ -8,8 +8,8 @@
 ################################################################################
 
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
-project("WLLogging" LANGUAGES C VERSION 0.0.0.11)
+project("Primrose" LANGUAGES C VERSION 0.0.0.12)
 
 include(Helpers)
 run_checks(ON)
-create_target(OFF RAW_SOURCES "WLLogging" OVERRIDE_SHARED ON)
+create_target(OFF RAW_SOURCES "Primrose" OVERRIDE_SHARED ON)
