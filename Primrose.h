@@ -9,7 +9,7 @@
 #define PRIMROSE_MAJOR_VERSION 0
 #define PRIMROSE_MINOR_VERSION 0
 #define PRIMROSE_PATCH_VERSION 0
-#define PRIMROSE_TWEAK_VERSION 13
+#define PRIMROSE_TWEAK_VERSION 14
 
 typedef enum
 {
@@ -100,7 +100,7 @@ void(primrose_log)(primrose_metadata_t data, primrose_type_t type,
 
     char message[columnSize];
     snprintf(message, columnSize,
-             "[\033[%dm%s\033[0m] %-10s fn. %-20s ln. %04zu: %s \n",
+             "[\033[%dm%s\033[0m] %-13s fn. %-20s ln. %04zu: %s \n",
              colors[type], tags[type], data.file, data.function, data.line,
              format);
     if (type == PRIMROSE_WARNING || type == PRIMROSE_ERROR)
